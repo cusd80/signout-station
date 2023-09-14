@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage Refresh</title>
+    <!-- Refresh page every 200s -->
+    <meta http-equiv="refresh" content="200">
+</head>
+<body>
+    <!-- Display the website in an iframe -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSflAYoH8P4NAM50FcyQBotzXzhxM_0nGlg0N5nNKvPUk9UG2A/viewform?embedded=true" style="position:fixed; top:0px; bottom:0px; left:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:hidden; z-index:999999;">
+        Your browser doesn't support iframes
+    </iframe>
+
+    <script>
+        // Function that attempts to request a screen wake lock
+        const requestWakeLock = async () => {
+            let wakeLock = null;
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                wakeLock.addEventListener('release', () => {
+                    console.log('Screen Wake Lock was released');
+                });
+                console.log('Screen Wake Lock active');
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        };
+
+        // Request a screen wake lock…
+        requestWakeLock();
+    </script>
+</body>
+</html>
