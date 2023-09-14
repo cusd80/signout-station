@@ -28,16 +28,32 @@
             font-size: 2.7em;
         }
     </style>
-    <script>
-        setTimeout(function(){
-            window.location.href = 'https://cusd80.github.io/signout-station/';
-        }, 200000);
-    </script>
+    <!-- Refresh the page every 10 minutes -->
+    <meta http-equiv="refresh" content="60">
 </head>
 <body>
     <div class="content">
         <h1>D110 Sign in/out</h1>
         <a href="https://cusd80.github.io/signout-station/form.html" class="button">Start</a>
     </div>
+
+    <script>
+        // Function that attempts to request a screen wake lock
+        const requestWakeLock = async () => {
+            let wakeLock = null;
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                wakeLock.addEventListener('release', () => {
+                    console.log('Screen Wake Lock was released');
+                });
+                console.log('Screen Wake Lock active');
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        };
+
+        // Request a screen wake lock…
+        requestWakeLock();
+    </script>
 </body>
 </html>
