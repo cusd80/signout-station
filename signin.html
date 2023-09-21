@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Lexend&display=swap');
+    </style>
+    <title>D110 Sign out/in</title>
+    <!-- Prevent search engines from indexing this page -->
+    <meta name="robots" content="noindex">
+    <!-- Redirect to inital page after 2 minutes -->
+    <meta http-equiv="refresh" content="120;url=https://signout.hamiltonhigh.tech/index.html">
+    <style>
+        * {
+            font-family: 'Lexend', sans-serif;
+        }
+        body {
+            overflow: hidden;
+        }
+        #iframe-container {
+            position: absolute;
+            top: 50px;
+            bottom: 50px;
+            left: 0;
+            right: 0;
+            overflow-y: scroll;
+        }
+        #iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        h1 + #iframe-container {
+            margin-top: 20px;
+        }
+        button {
+            display: inline-block;
+            border-radius: 15px;
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Complete the form below</h1>
+    <div id="iframe-container">
+        <iframe id="iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSflAYoH8P4NAM50FcyQBotzXzhxM_0nGlg0N5nNKvPUk9UG2A/viewform?embedded=true"></iframe>
+    </div>
+<div style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%);">
+    <a href="https://signout.hamiltonhigh.tech/index.html" style="color:white; text-decoration: none;">
+        <button style="background-color:green; color:white; padding:10px 20px; border:none;">Complete</button>
+    </a>
+</div>    <script>
+        // Function that attempts to request a screen wake lock
+        const requestWakeLock = async () => {
+            let wakeLock = null;
+            try {
+                wakeLock = await navigator.wakeLock.request('screen');
+                wakeLock.addEventListener('release', () => {
+                    console.log('Screen Wake Lock was released');
+                });
+                console.log('Screen Wake Lock active');
+            } catch (err) {
+                console.error(`${err.name}, ${err.message}`);
+            }
+        };
+        // Request a screen wake lock…
+        requestWakeLock();
+    </script>
+</body>
+</html>
