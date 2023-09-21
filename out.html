@@ -8,21 +8,53 @@
     <meta name="robots" content="noindex">
     <title>Someone's out!</title>
     <style>
-        .container {
+    	.dummy {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             font-family: 'Lexend', sans-serif;
         }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .text {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
         .timer {
             font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .button {
+            margin-top: 20px;
+        }
+        .button a {
+            text-decoration: none;
+            color: white;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+        *{
+        	font-family: Lexend;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="timer" id="timer">00:00:00</div>
+    <div class="dummy">
+        <div class="container">
+            <div class="text">Someone is currently out.</div>
+            <div class="timer" id="timer">00:00:00</div>
+            <div class="button">
+                <a href="https://google.com">
+                    <button style="background-color: green; color: white; padding: 15px 30px; border: none; border-radius: 5px; font-size:25px;">Sign in</button>
+                </a>
+            </div>
+        </div>
     </div>
     <script>
         function startTimer() {
