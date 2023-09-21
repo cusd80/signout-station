@@ -29,7 +29,6 @@
         h1 {
             margin-bottom: 20px;
         }
-        /* Add a gap between the h1 element and the iframe element */
         h1 + #iframe-container {
             margin-top: 20px;
         }
@@ -37,14 +36,14 @@
 </head>
 <body>
     <h1 style="text-align:center;">Complete the form below</h1>
-
     <div id="iframe-container">
         <iframe id="iframe" src="https://docs.google.com/forms/d/e/1FAIpQLSflAYoH8P4NAM50FcyQBotzXzhxM_0nGlg0N5nNKvPUk9UG2A/viewform?embedded=true"></iframe>
     </div>
-
-    <button style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%); background-color:green; color:white; padding:10px 20px; border:none;"><a href="https://signout.hamiltonhigh.tech/out.html" style="color:white;">Complete</a></button>
-
-    <script>
+<div style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%);">
+    <a href="https://signout.hamiltonhigh.tech/out.html" style="color:white; text-decoration: none;">
+        <button style="background-color:green; color:white; padding:10px 20px; border:none;">Complete</button>
+    </a>
+</div>    <script>
         // Function that attempts to request a screen wake lock
         const requestWakeLock = async () => {
             let wakeLock = null;
@@ -58,7 +57,6 @@
                 console.error(`${err.name}, ${err.message}`);
             }
         };
-
         // Request a screen wake lock…
         requestWakeLock();
     </script>
